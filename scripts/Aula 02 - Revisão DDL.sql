@@ -15,6 +15,9 @@ CREATE TABLE funcionario(
 
     CONSTRAINT funcionario_salario_check
     CHECK (salario >=2000 and salario <=15000)
+
+    CONSTRAINT funcionario_sexo_check
+    CHECK (sexo IN ('m', 'f', 'o', 'M', 'F', 'O'))
 );
 
 CREATE TABLE departamento(
