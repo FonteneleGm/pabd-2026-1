@@ -55,3 +55,90 @@ SELECT message FROM t;
 
 select * from t
 where message like '%10$%%' escape '$';
+
+-- Início Aula 05 25/08/2026
+
+-- order by, limit;
+select pnome, unome from funcionario
+order by pnome desc, unome desc;
+
+-- Maior salário
+select pnome, unome, salario from funcionario
+order by salario desc
+limit 1;
+
+-- Funções de agregação: count, sum, avg, min, max
+select count(*)TotalFuncionarios from funcionario;
+
+select count(distinct numero_departamento) from funcionario;
+
+select sum(salario) as "Folha Salarial" from funcionario;
+
+select sum(salario) as "Folha Salarial Departamento 1" from funcionario
+where numero_departamento  = 1;
+
+select avg(salario) media_salarial from funcionario;
+
+select round(avg(salario), 2) media_salarial from funcionario;
+
+select
+      min(salario) menor_salario,
+      max(salario) maior_salario
+from funcionario;
+
+-- Nome do funcionário com menor salário.
+select pnome, unome from funcionario
+where salario = (
+      select min(salario) from funcionario
+); 
+
+-- Nome dos funcionários com salário acima da média.
+select pnome, unome from funcionario
+where salario >= (
+      select avg(salario) media_salarial from funcionario
+);
+
+/*
+      Relatório salarial completo: total de funcionários, folha salarial,
+      inss, média salarial, menor salário e maior salário
+*/
+select 
+      count(*)total_funcionarios from funcionario,
+      sum(salario) folha_salarial,
+      sum(salario)*0.11 inss,
+      round(avg(salario), 2) media_salarial,
+      min(salario) menor_salario,
+      max(salario) maior_salario
+from funcionario;
+
+-- Junções: inner join, left join, right join, full join
+
+-- Listar nome dos funcionários e seus respectivos nomes de departamentos
+select
+      f.pnome || " " || f.unome funcionario,
+      d.nome departamento
+from funcionario f
+join departamento d
+      on f.numero_departamento = d.numero
+order by d.nome, f.pnome;
+
+-- Listar todos os funcionários e seus respectivos supervisores 
+-- incluindo funcionários sem supervisor (NULL)
+select 
+      f.pnome || " " || f.unome funcionario,       
+      s.pnome || " " || s.unome supervisor
+from funcionario f
+left join supervisor s
+      on f.cpf_supervisor = s.cpf
+order by f.pnome, f.unome;
+-- Coalece: Se for null
+select 
+      f.pnome || " " || f.unome funcionario,       
+      coalesce(s.pnome || " " || s.unome, 'Sem supervisor') supervisor
+from funcionario f
+left join supervisor s
+      on f.cpf_supervisor = s.cpf
+order by s.pnome null last, f.pnome, f.unome;
+
+-- Exists, Not Exists
+
