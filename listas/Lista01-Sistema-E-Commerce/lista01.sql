@@ -1,5 +1,6 @@
 /*
 -- LISTA DE EXERCÍCIOS 1 — Sistema de E-commerce
+Mais detalhes em: "/listas/Lista01-Sistema-E-Commerce/lista01.md"
 */ 
 
 -- 1.	Liste os produtos com preço superior a R$ 1000.
