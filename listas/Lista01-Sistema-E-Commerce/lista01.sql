@@ -1,13 +1,5 @@
 /*
 -- LISTA DE EXERCÍCIOS 1 — Sistema de E-commerce
--- Respostas (PostgreSQL)
---
--- Pré-requisito: rodar schema.sql antes deste arquivo.
---
--- ATENÇÃO À ORDEM: os exercícios 3, 4 e 5 alteram os dados (UPDATE/DELETE)
--- e, portanto, mudam o resultado dos exercícios 1, 2, 12 e 14 se você
--- reexecutá-los depois. Se quiser testar sem sujar a base, envolva o
--- bloco 3-5 em BEGIN; ... ROLLBACK; (ver marcações abaixo).
 */ 
 
 -- 1.	Liste os produtos com preço superior a R$ 1000.
