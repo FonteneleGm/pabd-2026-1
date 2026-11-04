@@ -29,6 +29,15 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'DVD Rental API',
+    'DESCRIPTION': 'API somente para leitura do banco DVD Rental.',
+    'VERSION': '1.0.0',
+}
 
 INSTALLED_APPS = [
     "django.contrib.admin",
