@@ -1,2 +1,4 @@
 desafios/f1db-sql-postgresql.sql
 api/env
+__pycache__/
+__init__.py
